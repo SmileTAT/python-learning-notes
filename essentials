@@ -1,0 +1,136 @@
+# # 
+List
+a.append  a.extend
+# #
+
+# # 
+Mutable, Immutable Data Type
+Mutable: list, dictionary, set, numpy, array, user, defined objects
+Immutable: integer, float, long, complex, string, tuple, frozenset
+
+a = [1,2,3,4]
+b = a
+此时，a和b指向同一块区域 改变b，a也会改变
+# #
+
+# #
+Dictionary
+出于hash的目的， 键值必须是不可变的，不要用浮点数，由于精度问题
+d.keys(), d.values(), d.items()
+get, pop, update, in, 
+# #
+
+# #
+Set
+并 a.union(), a|b
+交 a.intersection(b), a&b
+差 a.difference(b), a-b b不在a中的元素
+对称差 a.symmetric_difference, b.symmetric_difference(a), a^b
+包含关系 b.issubset(a), b<=a 方法只能测试子集，操作符可以测试真子集
+
+s.add(a)
+s.update(seq)
+s.remove(ob)
+t.pop() 删除并返回任意一个元素， 空集会报错
+t.discard(3), 同remove
+a.difference_update(b) 从a中去除所有b的元素
+# #
+
+# #
+frozen set
+一旦创建，不可改变， 主要应用 字典的建
+# #
+
+# #
+python 赋值机制
+简单类型， 容器类型
+# #
+
+# #
+Function
+接收不定参数 
+*args, for arg in args:
+**kwargs, for arg, value in kwargs.items():
+def add(x, y):
+    return x+y
+参数以元组传入  
+z = (2,3)
+add(*z)
+参数以字典传入
+w = ('x':2. 'y':3)
+add(**w)
+
+map 方法生成序列
+map(aFun, aSeq)
+# #
+
+# #
+模块和包
+只有当文件被当作脚本执行时 __name__ 的值才会是‘__main__’ 
+包
+foo/
+  __init__.py
+  bar.py(defines func)
+  baz.py(defines zap)
+意味着foo是一个包
+__init__.py 表示foo是一个包，可以为空文件
+# #
+
+# #
+异常
+try, except
+将except的值改为Exception类，来捕捉所有的异常
+try:
+  ...
+except Exception:
+  ...
+指定特定值
+except （ValueError, ZeroDivisionError）:
+
+try:
+  ...
+except:
+  pass
+自定义异常
+class CommandError(ValueError):
+  pass
+raise 抛出异常
+finally 关键词，finally块总是被执行，在抛出异常前执行 可以用作安全保证 比如确保打开的文件关闭
+# #
+
+# #
+警告
+import warnings
+# #
+
+# #
+文件读写
+读文件 f = open('test.txt'), f = file('test.txt')，没有太大区别，文件不存在报错
+读内容 text = f.read()
+按行读 lines = f.readlines()
+f.close()
+
+for line in f:
+  ...
+
+写文件
+f = open('myfile.txt', 'w')
+f.write('Hello World!')
+f.close()
+f.write('...') 内容追加，不会覆盖之前
+读写模式 f = open('myfile.txt','w+')
+f.seek(6) 移动到文件的第6个字符处
+
+二进制文件
+f = open('binary.bin','wb')
+f.write(os.urandom(16))
+f.close()
+
+f = open('binary.bin','rb')
+repr(f.read())
+f.close()
+
+f.close()前 文件未写入磁盘, 使用for 未完全写入磁盘
+with 方法
+
+os.remove('...')
