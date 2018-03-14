@@ -1,0 +1,43 @@
+# #
+a * b 对应元素相乘
+# #
+
+# #
+Matplotlib 基础
+plot, label
+scatter
+hist
+http://matplotlib.org/gallery.html
+# #
+
+# #
+Numpy 
+数组属性
+dtype, itemsize, shape, size, nbytes, ndim
+fill方法， 数组中元素dtype 与初始相同
+
+切片是引用，指向所分配的内存空间，会相应改变， 与list不同
+a = array([1,2,3,4,5])
+b = a[2:4].copy()
+copy 方法产生一个复制，申请新的内存
+
+花式索引 fancy slicing
+
+where 语句
+indices = where（a>10）
+rows, cols = where(a>10) 
+where 返回值是一个元组
+# #
+
+a = array([1, 1.2, 'hello', [10, 20, 30]], dtype = object)
+a*2 = array([2, 2.4, 'hellohello', [10, 20, 30, 10, 20, 30]], dtype = object)
+
+asarray 函数修改dtype，不改变原来的值
+astype 返回一个新数组
+view 方法
+b = a.view(uint8), view将a在内存中的表示看成uint8进行解析，共用一块内存，相应改变
+# #
+
+# #
+数组方法
+求和 sum
